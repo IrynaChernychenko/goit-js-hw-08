@@ -1,0 +1,10 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 24px;
+}
+.gallery-item:hover {
+  transform: scale(1.05);
+}
