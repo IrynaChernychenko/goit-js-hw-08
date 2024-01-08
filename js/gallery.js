@@ -88,40 +88,34 @@
 
 galleryContainer.append(...galleryItems);
 
+
 galleryContainer.addEventListener('click', onGalleryItemClick);
 
 function onGalleryItemClick(event) {
   event.preventDefault();
 
   if (event.target.classList.contains('gallery-image')) {
+ 
     const largeImageSrc = event.target.dataset.source;
 
-    console.log(largeImageSrc);
-  }
-}
-const galleryConteiner = document.querySelector('.gallery');
-
-galleryConteiner.addEventListener('click', onGaleryItemClick);
-
-function onGaleryItemClick(event) {
-  event.preventDefault();
-
-  if (event.target.classList.contains('gallery-image')) {
-
-    const largeImageSrc = event.target.dataset.source;
-
+  
     const instance = basicLightbox.create(`
       <img width="1400" height="900" src="${largeImageSrc}" alt="Large Image">
     `);
-  
+
     instance.show();
+
+    setTimeout(() => { instance.close(); }, 3000);
+    
     window.addEventListener('keydown', onKeyPress);
 
     function onKeyPress(event) {
-      if (event.code === 'Escape') {
+      if (event.code === 'Escape')  {
+     
         instance.close();
+
         window.removeEventListener('keydown', onKeyPress);
-      }
+      } 
     }
   }
 }
